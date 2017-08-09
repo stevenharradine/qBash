@@ -14,5 +14,5 @@ echo "$(tail -n +2 $input)" > $input
 # if the list is not empty
 if [[ ! ( "`head -n 1 $input`" == "" && "`cat $input | wc -l`" -eq 1 ) ]]; then
 	# recursively execute this function with the same parameters
-	bash run.sh "$1" $2
+	./run.sh "$1" $2
 fi

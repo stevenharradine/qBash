@@ -40,7 +40,7 @@ elif [[ $input == "" ]]; then
 	echo "You must define 'inputFile' argument"
 else
 	currentArgument=`head -n 1 "$input"`                                           # get the first element from the list
-	echo $($command "$currentArgument")                                            # execute command with argument
+	bash -c "$command \"$currentArgument\""                                        # execute command with argument
 	echo "$(tail -n +2 $input)" > $input                                           # delete top element from the list
 
 	if [[ ! ( "`head -n 1 $input`" == "" && "`cat $input | wc -l`" -eq 1 ) ]];then # if the list is not empty

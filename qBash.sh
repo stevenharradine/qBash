@@ -1,6 +1,6 @@
 #!/bin/bash
 # (c) 2021 Steven Harradine
-version=2.0.1
+version=2.0.2
 delay=0
 command=""
 input=""

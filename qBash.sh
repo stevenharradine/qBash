@@ -5,6 +5,7 @@ delay=0
 command=""
 input=""
 help=""
+update=""
 
 for arg in "$@"; do
 		key=`echo "$arg" | awk -F "=" '{print $1}'`
@@ -18,6 +19,8 @@ for arg in "$@"; do
 				delay=$value
 		elif [[ $key == "--help" ]]; then
 				help="me"
+		elif [[ $key == "--update" ]]; then
+				update="me"
 		fi
 done
 
@@ -33,7 +36,17 @@ if [[ $help != "" ]]; then
 	echo " * 'inputFile' is a line delimited file with the parameters to be appended to the end of the command"
 	echo " * 'delay' (optional) is the amount of time to sleep between runs"
 	echo " * 'help' displays this help screen"
+	echo " * 'update' update qBash to the latest version"
 	echo ""
+elif [[ $update != "" ]]; then
+	echo "Updating"
+	installDir=`dirname "$0"`
+
+	if [[ "$0" == *.sh ]];then                                # is this command NOT installed? (running via script)
+		add_file_extension_fragment="add-sh-file-extention=true"
+	fi
+
+	curl https://raw.githubusercontent.com/stevenharradine/bashInstaller/master/installer.sh | bash -s program=qBash skip-ownership-and-permissions $add_file_extension_fragment "installDir=$installDir"
 elif [[ $command == "" ]]; then
 	echo "You must define 'command' argument"
 elif [[ $input == "" ]]; then

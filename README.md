@@ -13,6 +13,7 @@ QueueBash executes bash commands passing in a variable from a queue.
  * `inputFile` is a line delimited file with the parameters to be appended to the end of the command
  * `delay` (optional) is the amount of time to sleep between runs
  * `help` displays help screen
+ * `update` update qBash to the latest version
 
 ## Example (installed)
 1. Install
